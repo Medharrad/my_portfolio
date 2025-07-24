@@ -673,16 +673,33 @@ export default function Portfolio() {
             </p>
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <Mail className="text-purple-400" size={20} />
-                <span className="text-gray-300">harrademed@gmail.com</span>
+              <Mail className="text-purple-400" size={20} />
+              <a
+                href="mailto:harrademed@gmail.com"
+                className="text-gray-300 hover:text-purple-400 transition-colors underline"
+              >
+                harrademed@gmail.com
+              </a>
               </div>
               <div className="flex items-center gap-3">
-                <Phone className="text-purple-400" size={20} />
-                <span className="text-gray-300">+212 6 90 62 66 45</span>
+              <Phone className="text-purple-400" size={20} />
+              <a
+                href="tel:+212690626645"
+                className="text-gray-300 hover:text-purple-400 transition-colors underline"
+              >
+                +212 6 90 62 66 45
+              </a>
               </div>
               <div className="flex items-center gap-3">
-                <MapPin className="text-purple-400" size={20} />
-                <span className="text-gray-300">Sidi Maarouf, Casablanca</span>
+              <MapPin className="text-purple-400" size={20} />
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Sidi+Maarouf,+Casablanca"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-purple-400 transition-colors underline"
+              >
+                Sidi Maarouf, Casablanca
+              </a>
               </div>
             </div>
           </div>
@@ -695,7 +712,7 @@ export default function Portfolio() {
             >
               {/* disable CAPTCHA & redirect */}
               <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_next" value="http://localhost:3000/thank-you" />
+              <input type="hidden" name="_next" value="https://harradmed.netlify.app/thank-you" />
 
               <input
                 type="text"
