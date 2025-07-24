@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Pacifico } from 'next/font/google'
@@ -26,7 +26,7 @@ const pacifico = Pacifico({ weight: '400', subsets: ['latin'] })
 export default function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
-  const sectionIds = ['about', 'experience', 'projects', 'contact'];
+  const sectionIds = useMemo(() => ['about', 'experience', 'projects', 'contact'], []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -124,7 +124,7 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white scroll-smooth">
+    <div className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white scroll-smooth">
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-black/20 backdrop-blur-lg border-b border-white/10 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
