@@ -129,9 +129,13 @@ export default function Portfolio() {
       <nav className="fixed top-0 w-full bg-black/20 backdrop-blur-lg border-b border-white/10 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <div className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <button
+              type="button"
+              className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent focus:outline-none"
+              onClick={() => scrollToSection('about')}
+            >
               Mohamed HARRAD
-            </div>
+            </button>
             <div className="hidden md:flex space-x-8">
               {['about', 'experience', 'projects', 'contact'].map((section) => (
                 <button
@@ -219,69 +223,407 @@ export default function Portfolio() {
                 </a>
               </div>
             </div>
-            <div className="relative">
-              <div className="w-76 h-76 mx-auto bg-gradient-to-br from-purple-400 to-pink-400 rounded-full opacity-20 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse" />
-              <div className="relative z-10 w-96 h-96 mx-auto   flex items-center justify-center">
-                <Image
-                  src="/images/med.png"
-                  alt="Mohamed HARRAD"
-                  width={256}
-                  height={256}
-                  className="rounded-full w-90 h-110 object-cover "
-                  priority
-                  unoptimized
+            <div className="relative flex items-center justify-center w-96 h-96 mx-auto overflow-hidden">
+              {/* Floating particles */}
+              {[...Array(8)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-2 h-2 bg-white/40 rounded-full"
+                  animate={{
+                    x: [0, Math.random() * 200 - 100],
+                    y: [0, Math.random() * 200 - 100],
+                    scale: [0, 1, 0],
+                    opacity: [0, 1, 0]
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 4 + Math.random() * 3,
+                    delay: Math.random() * 2,
+                    ease: "easeInOut"
+                  }}
+                  style={{
+                    left: `${20 + Math.random() * 60}%`,
+                    top: `${20 + Math.random() * 60}%`,
+                    zIndex: 2
+                  }}
                 />
-              </div>
+              ))}
+
+              {/* Main animated background shapes */}
+              <motion.div
+                className="absolute w-72 h-72 rounded-full"
+                style={{
+                  background: "linear-gradient(135deg, rgba(147, 51, 234, 0.3) 0%, rgba(236, 72, 153, 0.3) 100%)",
+                  backdropFilter: "blur(40px)",
+                  zIndex: 1,
+                }}
+                animate={{
+                  scale: [1, 1.1, 1],
+                  rotate: [0, 180, 360],
+                  x: [0, 20, -20, 0],
+                  y: [0, -20, 20, 0]
+                }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 20,
+                  ease: "easeInOut"
+                }}
+              />
+
+              {/* Orbiting elements */}
+              <motion.div
+                className="absolute w-full h-full"
+                animate={{ rotate: [0, 360] }}
+                transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
+                style={{ zIndex: 1 }}
+              >
+                <motion.div
+                  className="absolute w-16 h-16 rounded-full"
+                  style={{
+                    background: "linear-gradient(45deg, rgba(59, 130, 246, 0.4), rgba(147, 51, 234, 0.4))",
+                    backdropFilter: "blur(20px)",
+                    top: "10%",
+                    left: "50%",
+                    marginLeft: "-32px"
+                  }}
+                  animate={{
+                    scale: [1, 1.3, 1],
+                    opacity: [0.4, 0.8, 0.4]
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 3,
+                    ease: "easeInOut"
+                  }}
+                />
+              </motion.div>
+
+              <motion.div
+                className="absolute w-full h-full"
+                animate={{ rotate: [360, 0] }}
+                transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
+                style={{ zIndex: 1 }}
+              >
+                <motion.div
+                  className="absolute w-12 h-12 rounded-full"
+                  style={{
+                    background: "linear-gradient(45deg, rgba(236, 72, 153, 0.5), rgba(251, 146, 60, 0.5))",
+                    backdropFilter: "blur(15px)",
+                    bottom: "15%",
+                    right: "20%"
+                  }}
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.5, 1, 0.5]
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 2.5,
+                    ease: "easeInOut"
+                  }}
+                />
+              </motion.div>
+
+              {/* Morphing blob shapes */}
+              <motion.div
+                className="absolute w-48 h-48"
+                style={{
+                  background: "linear-gradient(60deg, rgba(168, 85, 247, 0.25) 0%, rgba(236, 72, 153, 0.25) 50%, rgba(59, 130, 246, 0.25) 100%)",
+                  borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
+                  backdropFilter: "blur(30px)",
+                  zIndex: 1,
+                  left: "15%",
+                  top: "15%"
+                }}
+                animate={{
+                  borderRadius: [
+                    "60% 40% 30% 70% / 60% 30% 70% 40%",
+                    "30% 60% 70% 40% / 50% 60% 30% 60%",
+                    "60% 40% 30% 70% / 60% 30% 70% 40%"
+                  ],
+                  rotate: [0, 120, 240, 360],
+                  x: [0, 15, -15, 0],
+                  y: [0, -15, 15, 0]
+                }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 18,
+                  ease: "easeInOut"
+                }}
+              />
+
+              <motion.div
+                className="absolute w-32 h-32"
+                style={{
+                  background: "linear-gradient(120deg, rgba(34, 197, 94, 0.3) 0%, rgba(59, 130, 246, 0.3) 100%)",
+                  borderRadius: "40% 60% 60% 40% / 60% 30% 70% 40%",
+                  backdropFilter: "blur(25px)",
+                  zIndex: 1,
+                  right: "10%",
+                  bottom: "20%"
+                }}
+                animate={{
+                  borderRadius: [
+                    "40% 60% 60% 40% / 60% 30% 70% 40%",
+                    "60% 40% 40% 60% / 40% 70% 30% 60%",
+                    "40% 60% 60% 40% / 60% 30% 70% 40%"
+                  ],
+                  rotate: [360, 0],
+                  scale: [1, 1.1, 1]
+                }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 15,
+                  ease: "easeInOut"
+                }}
+              />
+
+              {/* Geometric shapes with complex animations */}
+              <motion.div
+                className="absolute w-24 h-24"
+                style={{
+                  background: "linear-gradient(45deg, rgba(251, 146, 60, 0.4), rgba(239, 68, 68, 0.4))",
+                  clipPath: "polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)",
+                  backdropFilter: "blur(20px)",
+                  zIndex: 1,
+                  left: "70%",
+                  top: "25%"
+                }}
+                animate={{
+                  rotate: [0, 72, 144, 216, 288, 360],
+                  scale: [1, 1.2, 1],
+                  x: [0, 10, -10, 0],
+                  y: [0, -10, 10, 0]
+                }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 12,
+                  ease: "easeInOut"
+                }}
+              />
+
+              {/* Pulsing ring */}
+              <motion.div
+                className="absolute w-80 h-80 rounded-full border-2 border-white/20"
+                style={{ zIndex: 1 }}
+                animate={{
+                  scale: [1, 1.05, 1],
+                  opacity: [0.3, 0.6, 0.3],
+                  rotate: [0, 360]
+                }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 8,
+                  ease: "easeInOut"
+                }}
+              />
+
+              {/* Profile Image with enhanced styling */}
+              <motion.div
+                className="relative z-10 flex items-center justify-center w-full h-full"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+              >
+                <motion.div
+                  className="relative w-full h-full max-w-96 max-h-96 rounded-full overflow-hidden"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/20 via-transparent to-pink-500/20 rounded-full z-10" />
+                  {/* <img
+                    src="/images/med_1.png"  // Replace with your actual image path
+                    alt="Mohamed HARRAD"
+                    
+                    
+                  /> */}
+                  <Image
+                    src="/images/med_1.png"
+                    alt="Mohamed HARRAD"
+                    fill
+                    className="w-full h-full rounded-full object-cover shadow-2xl"
+                    priority
+                    unoptimized
+                    style={{
+                      filter: "contrast(1.1) saturate(1.1)",
+                      boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)"
+                    }}
+                  />
+                </motion.div>
+              </motion.div>
+
+              {/* Subtle grid overlay */}
+              <div
+                className="absolute inset-0 opacity-10"
+                style={{
+                  backgroundImage: `
+                    linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+                  `,
+                  backgroundSize: '20px 20px',
+                  zIndex: 0
+                }}
+              />
             </div>
+
+          </div>
+    </div>
+      </section >
+
+    {/* Experience Section */ }
+    < section id = "experience" className = "py-20" >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold mb-16 text-center">
+          Experience & <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Education</span>
+        </h2>
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Work Experience */}
+          <div className="space-y-8">
+            {[{
+              role: "Full Stack Developer",
+              company: "HSABATI",
+              link: "https://www.hsabati.com/",
+              period: "Sep 2024 – Present",
+              desc: "Built secure REST APIs with Laravel, integrated with Next.js frontend, and built admin dashboards using Vue.js.",
+              skills: ["Laravel", "Vue JS", "Next.js"]
+            }, {
+              role: "Full Stack Developer",
+              company: "IRMA Service",
+              link: "https://irmaservice.com/",
+              period: "Jul 2023 – Oct 2024",
+              desc: "Created e-commerce platform with user management, inventory, payment, and Zoom API integration.",
+              skills: ["Laravel", "Zoom API", "UX"]
+            }, {
+              role: "Full Stack Developer",
+              company: "YOYAMY",
+              period: "2021 – 2023",
+              desc: "Built a restaurant web app with ordering, reservations, and tailored business modules.",
+              skills: ["Laravel", "PHP", "Custom Systems"]
+            }].map((job, idx) => (
+              <div key={idx} className="bg-white/5 p-6 rounded-xl border border-white/10 hover:border-purple-400/50 transition">
+                <div className="flex justify-between mb-4">
+                  <div>
+                    <h4 className="text-xl font-semibold">{job.role}</h4>
+                    <a href={job.link} className="text-purple-400 hover:text-purple-300 transition-colors">
+                      {job.company}
+                    </a>
+                  </div>
+                  <span className="text-gray-400 text-sm flex items-center gap-1">
+                    <Calendar size={16} /> {job.period}
+                  </span>
+                </div>
+                <p className="text-gray-300 mb-4">{job.desc}</p>
+                <div className="flex flex-wrap gap-2">
+                  {job.skills.map((skill, idx) => {
+                    const colorClasses = [
+                      "bg-purple-400/20 text-purple-300",
+                      "bg-pink-400/20 text-pink-300",
+                      "bg-blue-400/20 text-blue-300",
+                      "bg-green-400/20 text-green-300",
+                      "bg-yellow-400/20 text-yellow-300",
+                      "bg-indigo-400/20 text-indigo-300",
+                    ];
+                    const colorClass = colorClasses[idx % colorClasses.length];
+                    return (
+                      <span
+                        key={skill}
+                        className={`px-3 py-1 ${colorClass} rounded-full text-sm`}
+                      >
+                        {skill}
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Education */}
+          <div className="space-y-8">
+            {[
+              {
+                degree: "Bachelor's in Math & Computer Science",
+                school: "University Ibn Zohr Agadir",
+                year: "2020 – 2022"
+              },
+              {
+                degree: "DEUG in Math & Computer Science",
+                school: "University Ibn Zohr Agadir",
+                year: "2017 – 2020"
+              },
+              {
+                degree: "Baccalaureate in Math Sciences",
+                school: "HASSAN II High School, Ouled Teima",
+                year: "2017"
+              }
+            ].map((edu, idx) => (
+              <div key={idx} className="flex items-start gap-4 bg-white/5 p-6 rounded-xl border border-white/10 hover:border-purple-400/50 transition">
+                <div className="flex-shrink-0 mt-1">
+                  <BookOpenText className="text-purple-400" size={28} />
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold mb-1">{edu.degree}</h4>
+                  <p className="text-purple-400 mb-1">{edu.school}</p>
+                  <p className="text-gray-400 text-sm">{edu.year}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      </section>
+      </div>
+      </section >
 
-      {/* Experience Section */}
-      <section id="experience" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold mb-16 text-center">
-            Experience & <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Education</span>
-          </h2>
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Work Experience */}
-            <div className="space-y-8">
-              {[{
-                role: "Full Stack Developer",
-                company: "HSABATI",
-                link: "https://www.hsabati.com/",
-                period: "Sep 2024 – Present",
-                desc: "Built secure REST APIs with Laravel, integrated with Next.js frontend, and built admin dashboards using Vue.js.",
-                skills: ["Laravel", "Vue JS", "Next.js"]
-              }, {
-                role: "Full Stack Developer",
-                company: "IRMA Service",
-                link: "https://irmaservice.com/",
-                period: "Jul 2023 – Oct 2024",
-                desc: "Created e-commerce platform with user management, inventory, payment, and Zoom API integration.",
-                skills: ["Laravel", "Zoom API", "UX"]
-              }, {
-                role: "Full Stack Developer",
-                company: "YOYAMY",
-                period: "2021 – 2023",
-                desc: "Built a restaurant web app with ordering, reservations, and tailored business modules.",
-                skills: ["Laravel", "PHP", "Custom Systems"]
-              }].map((job, idx) => (
-                <div key={idx} className="bg-white/5 p-6 rounded-xl border border-white/10 hover:border-purple-400/50 transition">
-                  <div className="flex justify-between mb-4">
-                    <div>
-                      <h4 className="text-xl font-semibold">{job.role}</h4>
-                      <a href={job.link} className="text-purple-400 hover:text-purple-300 transition-colors">
-                        {job.company}
-                      </a>
-                    </div>
-                    <span className="text-gray-400 text-sm flex items-center gap-1">
-                      <Calendar size={16} /> {job.period}
-                    </span>
-                  </div>
-                  <p className="text-gray-300 mb-4">{job.desc}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {job.skills.map((skill, idx) => {
+    {/* Projects Section */ }
+    < section id = "projects" className = "py-20 bg-slate-900" >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold mb-12 text-center">
+          Featured <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Projects</span>
+        </h2>
+
+        {/* Tabs */}
+        <div className="flex justify-center flex-wrap gap-3 mb-12">
+          {tabs.map((tab) => (
+            <button
+              key={tab.value}
+              onClick={() => setSelectedTab(tab.value)}
+              className={`px-4 py-2 rounded-full border transition-all text-sm font-medium ${selectedTab === tab.value
+                ? "bg-purple-500 text-white border-purple-500"
+                : "text-purple-300 border-purple-300 hover:bg-purple-400/10"
+                }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Projects Grid with Animation */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={selectedTab}
+            initial={{ scale: 0.9, y: -10, opacity: 0 }}
+            animate={{ scale: 1, y: 0, opacity: 1 }}
+            exit={{ scale: 0.95, y: 10, opacity: 0 }}
+            transition={{ duration: 0.2, ease: 'easeInOut' }}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {filteredProjects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.2, delay: index * 0.05 }}
+                className="bg-white/5 rounded-xl border border-white/10 hover:border-purple-400/50 transition transform hover:scale-105 overflow-hidden"
+              >
+                <div className="h-48 bg-gradient-to-br from-purple-400/20 to-pink-400/20 flex items-center justify-center text-center px-4">
+                  <span className="text-white text-lg font-semibold">{project.title}</span>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                  <p className="text-gray-300 mb-4">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tech.map((skill, idx) => {
                       const colorClasses = [
                         "bg-purple-400/20 text-purple-300",
                         "bg-pink-400/20 text-pink-300",
@@ -292,235 +634,126 @@ export default function Portfolio() {
                       ];
                       const colorClass = colorClasses[idx % colorClasses.length];
                       return (
-                        <span
-                          key={skill}
-                          className={`px-3 py-1 ${colorClass} rounded-full text-sm`}
-                        >
+                        <span key={skill} className={`px-3 py-1 ${colorClass} rounded-full text-sm`}>
                           {skill}
                         </span>
                       );
                     })}
                   </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Education */}
-            <div className="space-y-8">
-              {[
-                {
-                  degree: "Bachelor's in Math & Computer Science",
-                  school: "University Ibn Zohr Agadir",
-                  year: "2020 – 2022"
-                },
-                {
-                  degree: "DEUG in Math & Computer Science",
-                  school: "University Ibn Zohr Agadir",
-                  year: "2017 – 2020"
-                },
-                {
-                  degree: "Baccalaureate in Math Sciences",
-                  school: "HASSAN II High School, Ouled Teima",
-                  year: "2017"
-                }
-              ].map((edu, idx) => (
-                <div key={idx} className="flex items-start gap-4 bg-white/5 p-6 rounded-xl border border-white/10 hover:border-purple-400/50 transition">
-                  <div className="flex-shrink-0 mt-1">
-                    <BookOpenText className="text-purple-400" size={28} />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold mb-1">{edu.degree}</h4>
-                    <p className="text-purple-400 mb-1">{edu.school}</p>
-                    <p className="text-gray-400 text-sm">{edu.year}</p>
+                  <div className="flex gap-4">
+                    {project.demo && project.demo !== "#" && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        className="flex items-center gap-1 text-purple-400 hover:text-purple-300 transition-colors"
+                      >
+                        <ExternalLink size={16} /> Demo
+                      </a>
+                    )}
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" className="py-20 bg-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold mb-12 text-center">
-            Featured <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Projects</span>
-          </h2>
-
-          {/* Tabs */}
-          <div className="flex justify-center flex-wrap gap-3 mb-12">
-            {tabs.map((tab) => (
-              <button
-                key={tab.value}
-                onClick={() => setSelectedTab(tab.value)}
-                className={`px-4 py-2 rounded-full border transition-all text-sm font-medium ${selectedTab === tab.value
-                  ? "bg-purple-500 text-white border-purple-500"
-                  : "text-purple-300 border-purple-300 hover:bg-purple-400/10"
-                  }`}
-              >
-                {tab.label}
-              </button>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+      </section >
 
-          {/* Projects Grid with Animation */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={selectedTab}
-              initial={{ scale: 0.9, y: -10, opacity: 0 }}
-              animate={{ scale: 1, y: 0, opacity: 1 }}
-              exit={{ scale: 0.95, y: 10, opacity: 0 }}
-              transition={{ duration: 0.2, ease: 'easeInOut' }}
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-            >
-              {filteredProjects.map((project, index) => (
-                <motion.div
-                  key={project.title}
-                  layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.2, delay: index * 0.05 }}
-                  className="bg-white/5 rounded-xl border border-white/10 hover:border-purple-400/50 transition transform hover:scale-105 overflow-hidden"
-                >
-                  <div className="h-48 bg-gradient-to-br from-purple-400/20 to-pink-400/20 flex items-center justify-center text-center px-4">
-                    <span className="text-white text-lg font-semibold">{project.title}</span>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                    <p className="text-gray-300 mb-4">{project.description}</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tech.map((skill, idx) => {
-                        const colorClasses = [
-                          "bg-purple-400/20 text-purple-300",
-                          "bg-pink-400/20 text-pink-300",
-                          "bg-blue-400/20 text-blue-300",
-                          "bg-green-400/20 text-green-300",
-                          "bg-yellow-400/20 text-yellow-300",
-                          "bg-indigo-400/20 text-indigo-300",
-                        ];
-                        const colorClass = colorClasses[idx % colorClasses.length];
-                        return (
-                          <span key={skill} className={`px-3 py-1 ${colorClass} rounded-full text-sm`}>
-                            {skill}
-                          </span>
-                        );
-                      })}
-                    </div>
-                    <div className="flex gap-4">
-                      {project.demo && project.demo !== "#" && (
-                        <a
-                          href={project.demo}
-                          target="_blank"
-                          className="flex items-center gap-1 text-purple-400 hover:text-purple-300 transition-colors"
-                        >
-                          <ExternalLink size={16} /> Demo
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-slate-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold mb-16 text-center">
-            Get In <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Touch</span>
-          </h2>
-          <div className="grid md:grid-cols-2 gap-12">
-            <div>
-              <h3 className="text-2xl font-semibold mb-6">Let&#39;s work together</h3>
-              <p className="text-gray-300 mb-8">
-                I&#39;m always interested in new opportunities and exciting projects. Feel free to reach out!
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <Mail className="text-purple-400" size={20} />
-                  <span className="text-gray-300">harrademed@gmail.com</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Phone className="text-purple-400" size={20} />
-                  <span className="text-gray-300">+212 6 90 62 66 45</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <MapPin className="text-purple-400" size={20} />
-                  <span className="text-gray-300">Sidi Maarouf, Casablanca</span>
-                </div>
+    {/* Contact Section */ }
+    < section id = "contact" className = "py-20 bg-slate-800" >
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold mb-16 text-center">
+          Get In <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Touch</span>
+        </h2>
+        <div className="grid md:grid-cols-2 gap-12">
+          <div>
+            <h3 className="text-2xl font-semibold mb-6">Let&#39;s work together</h3>
+            <p className="text-gray-300 mb-8">
+              I&#39;m always interested in new opportunities and exciting projects. Feel free to reach out!
+            </p>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <Mail className="text-purple-400" size={20} />
+                <span className="text-gray-300">harrademed@gmail.com</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone className="text-purple-400" size={20} />
+                <span className="text-gray-300">+212 6 90 62 66 45</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <MapPin className="text-purple-400" size={20} />
+                <span className="text-gray-300">Sidi Maarouf, Casablanca</span>
               </div>
             </div>
+          </div>
 
-            <div className="bg-white/5 p-8 rounded-xl border border-white/10 backdrop-blur-lg">
-              <form
-                action="https://formsubmit.co/c4c2dbd24943e1bd17a7e254c61392ad"
-                method="POST"
-                className="space-y-6"
+          <div className="bg-white/5 p-8 rounded-xl border border-white/10 backdrop-blur-lg">
+            <form
+              action="https://formsubmit.co/c4c2dbd24943e1bd17a7e254c61392ad"
+              method="POST"
+              className="space-y-6"
+            >
+              {/* disable CAPTCHA & redirect */}
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_next" value="http://localhost:3000/thank-you" />
+
+              <input
+                type="text"
+                name="name"
+                required
+                placeholder="Your Name"
+                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 transition-colors"
+              />
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="Your Email"
+                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 transition-colors"
+              />
+              <textarea
+                name="message"
+                required
+                placeholder="Your Message"
+                rows={5}
+                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 transition-colors resize-none"
+              ></textarea>
+              <button
+                type="submit"
+                className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105"
               >
-                {/* disable CAPTCHA & redirect */}
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_next" value="http://localhost:3000/thank-you" />
+                Send Message
+              </button>
+            </form>
 
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  placeholder="Your Name"
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 transition-colors"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="Your Email"
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 transition-colors"
-                />
-                <textarea
-                  name="message"
-                  required
-                  placeholder="Your Message"
-                  rows={5}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 transition-colors resize-none"
-                ></textarea>
-                <button
-                  type="submit"
-                  className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105"
-                >
-                  Send Message
-                </button>
-              </form>
-
-            </div>
           </div>
         </div>
-      </section>
+      </div>
+      </section >
 
-      {/* Footer */}
-      <footer className="border-t border-white/10 py-8 bg-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center text-gray-400">
-            <p>&copy; 2025 Mohamed HARRAD. All rights reserved.</p>
-          </div>
+    {/* Footer */ }
+    < footer className = "border-t border-white/10 py-8 bg-slate-900" >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center text-gray-400">
+          <p>&copy; 2025 Mohamed HARRAD. All rights reserved.</p>
         </div>
-      </footer>
-      <AnimatePresence>
-        {showScrollTop && (
-          <motion.button
-            onClick={scrollToTop}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 50 }}
-            transition={{ duration: 0.3 }}
-            className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-purple-600 hover:bg-purple-700 text-white shadow-lg transition"
-          >
-            <ArrowUp size={20} />
-          </motion.button>
-        )}
-      </AnimatePresence>
+      </div>
+      </footer >
+    <AnimatePresence>
+      {showScrollTop && (
+        <motion.button
+          onClick={scrollToTop}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 50 }}
+          transition={{ duration: 0.3 }}
+          className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-purple-600 hover:bg-purple-700 text-white shadow-lg transition"
+        >
+          <ArrowUp size={20} />
+        </motion.button>
+      )}
+    </AnimatePresence>
 
-    </div>
+    </div >
   );
 }
