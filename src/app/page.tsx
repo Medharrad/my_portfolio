@@ -2,8 +2,8 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Great_Vibes } from 'next/font/google'
 import { Pacifico } from 'next/font/google'
+export const runtime = 'edge';
 
 import {
   Menu,
@@ -32,7 +32,7 @@ export default function Portfolio() {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 200;
 
-      for (let id of sectionIds) {
+      for (const id of sectionIds) {
         const el = document.getElementById(id);
         if (el) {
           const offsetTop = el.offsetTop;
@@ -48,7 +48,7 @@ export default function Portfolio() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [sectionIds]);
 
 
   const scrollToSection = (sectionId: string) => {
@@ -138,8 +138,8 @@ export default function Portfolio() {
                   key={section}
                   onClick={() => scrollToSection(section)}
                   className={`capitalize transition-all duration-300 ${activeSection === section
-                      ? 'text-purple-400 border-b-2 border-purple-400'
-                      : 'hover:text-purple-300'
+                    ? 'text-purple-400 border-b-2 border-purple-400'
+                    : 'hover:text-purple-300'
                     }`}
                 >
                   {section}
@@ -177,7 +177,7 @@ export default function Portfolio() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-5xl lg:text-7xl font-bold mb-6">
-                Hello, I'm{' '}
+                Hello, I&#39;m{' '}
                 <br />
                 <span className={`${pacifico.className} bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent text-5xl`}>
                   Mohamed HARRAD
@@ -434,9 +434,9 @@ export default function Portfolio() {
           </h2>
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <h3 className="text-2xl font-semibold mb-6">Let's work together</h3>
+              <h3 className="text-2xl font-semibold mb-6">Let&#39;s work together</h3>
               <p className="text-gray-300 mb-8">
-                I'm always interested in new opportunities and exciting projects. Feel free to reach out!
+                I&#39;m always interested in new opportunities and exciting projects. Feel free to reach out!
               </p>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">

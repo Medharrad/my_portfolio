@@ -1,7 +1,8 @@
 'use client';
 
 import { Pacifico } from 'next/font/google';
-import { Mail, Phone, MapPin, ArrowUp } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
+export const runtime = 'edge';
 
 const pacifico = Pacifico({ weight: '400', subsets: ['latin'] });
 
