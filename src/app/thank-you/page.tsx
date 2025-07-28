@@ -19,22 +19,38 @@ export default function ThankYou() {
         I have received your message and will reply in the nearest future.
       </p>
 
-      <div className="bg-white/5 p-8 rounded-xl border border-white/10 backdrop-blur-lg max-w-md w-full space-y-6">
-        <h2 className="text-2xl font-semibold mb-4">Get In Touch</h2>
-        <div className="space-y-4 text-gray-300">
-          <div className="flex items-center gap-3">
-            <Mail className="text-purple-400" size={20} />
-            <span>harrademed@gmail.com</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <Phone className="text-purple-400" size={20} />
-            <span>+212 6 90 62 66 45</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <MapPin className="text-purple-400" size={20} />
-            <span>Sidi Maarouf, Casablanca</span>
-          </div>
-        </div>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="space-y-4">
+              <div className="flex items-center gap-3 justify-center">
+                <Mail className="text-purple-400" size={20} />
+                <a
+                  href="mailto:harrademed@gmail.com"
+                  className="text-gray-300 hover:text-purple-400 transition-colors underline"
+                >
+                  harrademed@gmail.com
+                </a>
+              </div>
+              <div className="flex items-center gap-3 justify-center">
+                <Phone className="text-purple-400" size={20} />
+                <a
+                  href="tel:+212690626645"
+                  className="text-gray-300 hover:text-purple-400 transition-colors underline"
+                >
+                  +212 6 90 62 66 45
+                </a>
+              </div>
+              <div className="flex items-center gap-3 justify-center">
+                <MapPin className="text-purple-400" size={20} />
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Sidi+Maarouf,+Casablanca"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-purple-400 transition-colors underline"
+                >
+                  Sidi Maarouf, Casablanca
+                </a>
+              </div>
+            </div>
       </div>
     </div>
   );

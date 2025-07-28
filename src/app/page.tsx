@@ -467,163 +467,59 @@ export default function Portfolio() {
             </div>
 
           </div>
-    </div>
+        </div>
       </section >
 
-    {/* Experience Section */ }
-    < section id = "experience" className = "py-20" >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold mb-16 text-center">
-          Experience & <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Education</span>
-        </h2>
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Work Experience */}
-          <div className="space-y-8">
-            {[{
-              role: "Full Stack Developer",
-              company: "HSABATI",
-              link: "https://www.hsabati.com/",
-              period: "Sep 2024 – Present",
-              desc: "Built secure REST APIs with Laravel, integrated with Next.js frontend, and built admin dashboards using Vue.js.",
-              skills: ["Laravel", "Vue JS", "Next.js"]
-            }, {
-              role: "Full Stack Developer",
-              company: "IRMA Service",
-              link: "https://irmaservice.com/",
-              period: "Jul 2023 – Oct 2024",
-              desc: "Created e-commerce platform with user management, inventory, payment, and Zoom API integration.",
-              skills: ["Laravel", "Zoom API", "UX"]
-            }, {
-              role: "Full Stack Developer",
-              company: "YOYAMY",
-              period: "2021 – 2023",
-              desc: "Built a restaurant web app with ordering, reservations, and tailored business modules.",
-              skills: ["Laravel", "PHP", "Custom Systems"]
-            }].map((job, idx) => (
-              <div key={idx} className="bg-white/5 p-6 rounded-xl border border-white/10 hover:border-purple-400/50 transition">
-                <div className="flex justify-between mb-4">
-                  <div>
-                    <h4 className="text-xl font-semibold">{job.role}</h4>
-                    <a href={job.link} className="text-purple-400 hover:text-purple-300 transition-colors">
-                      {job.company}
-                    </a>
-                  </div>
-                  <span className="text-gray-400 text-sm flex items-center gap-1">
-                    <Calendar size={16} /> {job.period}
-                  </span>
-                </div>
-                <p className="text-gray-300 mb-4">{job.desc}</p>
-                <div className="flex flex-wrap gap-2">
-                  {job.skills.map((skill, idx) => {
-                    const colorClasses = [
-                      "bg-purple-400/20 text-purple-300",
-                      "bg-pink-400/20 text-pink-300",
-                      "bg-blue-400/20 text-blue-300",
-                      "bg-green-400/20 text-green-300",
-                      "bg-yellow-400/20 text-yellow-300",
-                      "bg-indigo-400/20 text-indigo-300",
-                    ];
-                    const colorClass = colorClasses[idx % colorClasses.length];
-                    return (
-                      <span
-                        key={skill}
-                        className={`px-3 py-1 ${colorClass} rounded-full text-sm`}
+      {/* Experience Section */}
+      < section id="experience" className="py-20" >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold mb-16 text-center">
+            <span className='block inline '>Experience</span>
+            <span className="hidden lg:inline bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"> & Education</span>
+          </h2>
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Work Experience */}
+            <div className="space-y-8">
+              {[{
+                role: "Full Stack Developer",
+                company: "HSABATI",
+                link: "https://www.hsabati.com/",
+                period: "Sep 2024 – Present",
+                desc: "Built secure REST APIs with Laravel, integrated with Next.js frontend, and built admin dashboards using Vue.js.",
+                skills: ["Laravel", "Vue JS", "Next.js"]
+              }, {
+                role: "Full Stack Developer",
+                company: "IRMA Service",
+                link: "https://irmaservice.com/",
+                period: "Jul 2023 – Oct 2024",
+                desc: "Created e-commerce platform with user management, inventory, payment, and Zoom API integration.",
+                skills: ["Laravel", "Zoom API", "UX"]
+              }, {
+                role: "Full Stack Developer",
+                company: "YOYAMY",
+                period: "2021 – 2023",
+                desc: "Built a restaurant web app with ordering, reservations, and tailored business modules.",
+                skills: ["Laravel", "PHP", "Custom Systems"]
+              }].map((job, idx) => (
+                <div key={idx} className="bg-white/5 p-6 rounded-xl border border-white/10 hover:border-purple-400/50 transition">
+                  <div className="flex justify-between mb-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1">
+                      <h4 className="text-xl font-semibold">{job.role}</h4>
+                      <a
+                        href={job.link}
+                        className="text-purple-400 hover:text-purple-300 transition-colors sm:ml-2 text-base sm:text-lg break-words"
+                        style={{ wordBreak: 'break-word' }}
                       >
-                        {skill}
-                      </span>
-                    );
-                  })}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Education */}
-          <div className="space-y-8">
-            {[
-              {
-                degree: "Bachelor's in Math & Computer Science",
-                school: "University Ibn Zohr Agadir",
-                year: "2020 – 2022"
-              },
-              {
-                degree: "DEUG in Math & Computer Science",
-                school: "University Ibn Zohr Agadir",
-                year: "2017 – 2020"
-              },
-              {
-                degree: "Baccalaureate in Math Sciences",
-                school: "HASSAN II High School, Ouled Teima",
-                year: "2017"
-              }
-            ].map((edu, idx) => (
-              <div key={idx} className="flex items-start gap-4 bg-white/5 p-6 rounded-xl border border-white/10 hover:border-purple-400/50 transition">
-                <div className="flex-shrink-0 mt-1">
-                  <BookOpenText className="text-purple-400" size={28} />
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold mb-1">{edu.degree}</h4>
-                  <p className="text-purple-400 mb-1">{edu.school}</p>
-                  <p className="text-gray-400 text-sm">{edu.year}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-      </section >
-
-    {/* Projects Section */ }
-    < section id = "projects" className = "py-20 bg-slate-900" >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold mb-12 text-center">
-          Featured <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Projects</span>
-        </h2>
-
-        {/* Tabs */}
-        <div className="flex justify-center flex-wrap gap-3 mb-12">
-          {tabs.map((tab) => (
-            <button
-              key={tab.value}
-              onClick={() => setSelectedTab(tab.value)}
-              className={`px-4 py-2 rounded-full border transition-all text-sm font-medium ${selectedTab === tab.value
-                ? "bg-purple-500 text-white border-purple-500"
-                : "text-purple-300 border-purple-300 hover:bg-purple-400/10"
-                }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Projects Grid with Animation */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={selectedTab}
-            initial={{ scale: 0.9, y: -10, opacity: 0 }}
-            animate={{ scale: 1, y: 0, opacity: 1 }}
-            exit={{ scale: 0.95, y: 10, opacity: 0 }}
-            transition={{ duration: 0.2, ease: 'easeInOut' }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {filteredProjects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.2, delay: index * 0.05 }}
-                className="bg-white/5 rounded-xl border border-white/10 hover:border-purple-400/50 transition transform hover:scale-105 overflow-hidden"
-              >
-                <div className="h-48 bg-gradient-to-br from-purple-400/20 to-pink-400/20 flex items-center justify-center text-center px-4">
-                  <span className="text-white text-lg font-semibold">{project.title}</span>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <p className="text-gray-300 mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((skill, idx) => {
+                        {job.company}
+                      </a>
+                    </div>
+                    <span className="text-gray-400 text-sm flex items-center gap-1">
+                      <Calendar size={16} className='hidden lg:inline' /> {job.period}
+                    </span>
+                  </div>
+                  <p className="text-gray-300 mb-4">{job.desc}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {job.skills.map((skill, idx) => {
                       const colorClasses = [
                         "bg-purple-400/20 text-purple-300",
                         "bg-pink-400/20 text-pink-300",
@@ -634,142 +530,253 @@ export default function Portfolio() {
                       ];
                       const colorClass = colorClasses[idx % colorClasses.length];
                       return (
-                        <span key={skill} className={`px-3 py-1 ${colorClass} rounded-full text-sm`}>
+                        <span
+                          key={skill}
+                          className={`px-3 py-1 ${colorClass} rounded-full text-sm`}
+                        >
                           {skill}
                         </span>
                       );
                     })}
                   </div>
-                  <div className="flex gap-4">
-                    {project.demo && project.demo !== "#" && (
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        className="flex items-center gap-1 text-purple-400 hover:text-purple-300 transition-colors"
-                      >
-                        <ExternalLink size={16} /> Demo
-                      </a>
-                    )}
+                </div>
+              ))}
+            </div>
+
+            {/* Education */}
+
+            <div className="space-y-8">
+              <h2 className="block sm:hidden text-4xl font-bold mb-16 text-center">Education</h2>
+              {[
+                {
+                  degree: "Bachelor's in Math & Computer Science",
+                  school: "University Ibn Zohr Agadir",
+                  year: "2020 – 2022"
+                },
+                {
+                  degree: "General Academic Studies Degree in Math & Computer Science",
+                  school: "University Ibn Zohr Agadir",
+                  year: "2017 – 2020"
+                },
+                {
+                  degree: "Baccalaureate in Math Sciences",
+                  school: "HASSAN II High School, Ouled Teima",
+                  year: "2017"
+                }
+              ].map((edu, idx) => (
+                <div key={idx} className="flex items-start gap-4 bg-white/5 p-6 rounded-xl border border-white/10 hover:border-purple-400/50 transition">
+                  <div className="flex-shrink-0 mt-1">
+                    <BookOpenText className="text-purple-400" size={28} />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold mb-1">{edu.degree}</h4>
+                    <p className="text-purple-400 mb-1">{edu.school}</p>
+                    <p className="text-gray-400 text-sm">{edu.year}</p>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
-      </div>
-      </section >
-
-    {/* Contact Section */ }
-    < section id = "contact" className = "py-20 bg-slate-800" >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold mb-16 text-center">
-          Get In <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Touch</span>
-        </h2>
-        <div className="grid md:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-2xl font-semibold mb-6">Let&#39;s work together</h3>
-            <p className="text-gray-300 mb-8">
-              I&#39;m always interested in new opportunities and exciting projects. Feel free to reach out!
-            </p>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-              <Mail className="text-purple-400" size={20} />
-              <a
-                href="mailto:harrademed@gmail.com"
-                className="text-gray-300 hover:text-purple-400 transition-colors underline"
-              >
-                harrademed@gmail.com
-              </a>
-              </div>
-              <div className="flex items-center gap-3">
-              <Phone className="text-purple-400" size={20} />
-              <a
-                href="tel:+212690626645"
-                className="text-gray-300 hover:text-purple-400 transition-colors underline"
-              >
-                +212 6 90 62 66 45
-              </a>
-              </div>
-              <div className="flex items-center gap-3">
-              <MapPin className="text-purple-400" size={20} />
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=Sidi+Maarouf,+Casablanca"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-purple-400 transition-colors underline"
-              >
-                Sidi Maarouf, Casablanca
-              </a>
-              </div>
+              ))}
             </div>
           </div>
-
-          <div className="bg-white/5 p-8 rounded-xl border border-white/10 backdrop-blur-lg">
-            <form
-              action="https://formsubmit.co/c4c2dbd24943e1bd17a7e254c61392ad"
-              method="POST"
-              className="space-y-6"
-            >
-              {/* disable CAPTCHA & redirect */}
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_next" value="https://harradmed.netlify.app/thank-you" />
-
-              <input
-                type="text"
-                name="name"
-                required
-                placeholder="Your Name"
-                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 transition-colors"
-              />
-              <input
-                type="email"
-                name="email"
-                required
-                placeholder="Your Email"
-                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 transition-colors"
-              />
-              <textarea
-                name="message"
-                required
-                placeholder="Your Message"
-                rows={5}
-                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 transition-colors resize-none"
-              ></textarea>
-              <button
-                type="submit"
-                className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105"
-              >
-                Send Message
-              </button>
-            </form>
-
-          </div>
         </div>
-      </div>
       </section >
 
-    {/* Footer */ }
-    < footer className = "border-t border-white/10 py-8 bg-slate-900" >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center text-gray-400">
-          <p>&copy; 2025 Mohamed HARRAD. All rights reserved.</p>
+      {/* Projects Section */}
+      < section id="projects" className="py-20 bg-slate-900" >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold mb-12 text-center">
+            Featured <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Projects</span>
+          </h2>
+
+          {/* Tabs */}
+          <div className="flex justify-center flex-wrap gap-3 mb-12">
+            {tabs.map((tab) => (
+              <button
+                key={tab.value}
+                onClick={() => setSelectedTab(tab.value)}
+                className={`px-4 py-2 rounded-full border transition-all text-sm font-medium ${selectedTab === tab.value
+                  ? "bg-purple-500 text-white border-purple-500"
+                  : "text-purple-300 border-purple-300 hover:bg-purple-400/10"
+                  }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Projects Grid with Animation */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selectedTab}
+              initial={{ scale: 0.9, y: -10, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.95, y: 10, opacity: 0 }}
+              transition={{ duration: 0.2, ease: 'easeInOut' }}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {filteredProjects.map((project, index) => (
+                <motion.div
+                  key={project.title}
+                  layout
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.2, delay: index * 0.05 }}
+                  className="bg-white/5 rounded-xl border border-white/10 hover:border-purple-400/50 transition transform hover:scale-105 overflow-hidden"
+                >
+                  <div className="h-48 bg-gradient-to-br from-purple-400/20 to-pink-400/20 flex items-center justify-center text-center px-4">
+                    <span className="text-white text-lg font-semibold">{project.title}</span>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                    <p className="text-gray-300 mb-4">{project.description}</p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tech.map((skill, idx) => {
+                        const colorClasses = [
+                          "bg-purple-400/20 text-purple-300",
+                          "bg-pink-400/20 text-pink-300",
+                          "bg-blue-400/20 text-blue-300",
+                          "bg-green-400/20 text-green-300",
+                          "bg-yellow-400/20 text-yellow-300",
+                          "bg-indigo-400/20 text-indigo-300",
+                        ];
+                        const colorClass = colorClasses[idx % colorClasses.length];
+                        return (
+                          <span key={skill} className={`px-3 py-1 ${colorClass} rounded-full text-sm`}>
+                            {skill}
+                          </span>
+                        );
+                      })}
+                    </div>
+                    <div className="flex gap-4">
+                      {project.demo && project.demo !== "#" && (
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          className="flex items-center gap-1 text-purple-400 hover:text-purple-300 transition-colors"
+                        >
+                          <ExternalLink size={16} /> Demo
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
-      </div>
+      </section >
+
+      {/* Contact Section */}
+      < section id="contact" className="py-20 bg-slate-800" >
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold mb-16 text-center">
+            Get In <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Touch</span>
+          </h2>
+          <div className="grid md:grid-cols-2 gap-12">
+            <div>
+              <h3 className="text-2xl font-semibold mb-6">Let&#39;s work together</h3>
+              <p className="text-gray-300 mb-8">
+                I&#39;m always interested in new opportunities and exciting projects. Feel free to reach out!
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <Mail className="text-purple-400" size={20} />
+                  <a
+                    href="mailto:harrademed@gmail.com"
+                    className="text-gray-300 hover:text-purple-400 transition-colors underline"
+                  >
+                    harrademed@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Phone className="text-purple-400" size={20} />
+                  <a
+                    href="tel:+212690626645"
+                    className="text-gray-300 hover:text-purple-400 transition-colors underline"
+                  >
+                    +212 6 90 62 66 45
+                  </a>
+                </div>
+                <div className="flex items-center gap-3">
+                  <MapPin className="text-purple-400" size={20} />
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Sidi+Maarouf,+Casablanca"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-300 hover:text-purple-400 transition-colors underline"
+                  >
+                    Sidi Maarouf, Casablanca
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white/5 p-8 rounded-xl border border-white/10 backdrop-blur-lg">
+              <form
+                action="https://formsubmit.co/c4c2dbd24943e1bd17a7e254c61392ad"
+                method="POST"
+                className="space-y-6"
+              >
+                {/* disable CAPTCHA & redirect */}
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_next" value="https://harradmed.netlify.app/thank-you" />
+
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  placeholder="Your Name"
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 transition-colors"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="Your Email"
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 transition-colors"
+                />
+                <textarea
+                  name="message"
+                  required
+                  placeholder="Your Message"
+                  rows={5}
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 transition-colors resize-none"
+                ></textarea>
+                <button
+                  type="submit"
+                  className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  Send Message
+                </button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </section >
+
+      {/* Footer */}
+      < footer className="border-t border-white/10 py-8 bg-slate-900" >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center text-gray-400">
+            <p>&copy; 2025 Mohamed HARRAD. All rights reserved.</p>
+          </div>
+        </div>
       </footer >
-    <AnimatePresence>
-      {showScrollTop && (
-        <motion.button
-          onClick={scrollToTop}
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 50 }}
-          transition={{ duration: 0.3 }}
-          className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-purple-600 hover:bg-purple-700 text-white shadow-lg transition"
-        >
-          <ArrowUp size={20} />
-        </motion.button>
-      )}
-    </AnimatePresence>
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            onClick={scrollToTop}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 50 }}
+            transition={{ duration: 0.3 }}
+            className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-purple-600 hover:bg-purple-700 text-white shadow-lg transition"
+          >
+            <ArrowUp size={20} />
+          </motion.button>
+        )}
+      </AnimatePresence>
 
     </div >
   );
