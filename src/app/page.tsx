@@ -131,7 +131,7 @@ export default function Portfolio() {
           <div className="flex justify-between items-center py-4">
             <button
               type="button"
-              className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent focus:outline-none"
+              className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent focus:outline-none cursor-pointer"
               onClick={() => scrollToSection('about')}
             >
               Mohamed HARRAD
@@ -141,7 +141,7 @@ export default function Portfolio() {
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className={`capitalize transition-all duration-300 ${activeSection === section
+                  className={`capitalize cursor-pointer transition-all duration-300 ${activeSection === section
                     ? 'text-purple-400 border-b-2 border-purple-400'
                     : 'hover:text-purple-300'
                     }`}
@@ -190,10 +190,10 @@ export default function Portfolio() {
 
               </h1>
               <p className="text-xl text-gray-300 mb-6">
-                Full Stack Developer | Laravel & JavaScript Specialist
+                Full Stack Developer | Software Engineer
               </p>
               <p className="text-gray-400 mb-8">
-                I have over three years of experience building scalable and performant web apps using Laravel, Next.js, Vue.js, and modern stacks. Passionate about clean code, smooth UX, and business-focused solutions.
+                I have over three years of experience building scalable and performant web apps using modern stacks such as Laravel, Next.Js and Angular.Js. Passionate about clean code, smooth UX, and business-focused solutions.
               </p>
               <div className="flex flex-wrap gap-4 mb-8">
                 <a
@@ -206,7 +206,7 @@ export default function Portfolio() {
                 </a>
                 <button
                   onClick={() => scrollToSection('contact')}
-                  className="px-6 py-3 border border-purple-400 text-purple-400 rounded-lg hover:bg-purple-400 hover:text-white transition-all duration-300"
+                  className="px-6 py-3 border border-purple-400 cursor-pointer text-purple-400 rounded-lg hover:bg-purple-400 hover:text-white transition-all duration-300"
                 >
                   Get In Touch
                 </button>
@@ -225,29 +225,50 @@ export default function Portfolio() {
             </div>
             <div className="relative flex items-center justify-center w-96 h-96 mx-auto overflow-hidden">
               {/* Floating particles */}
-              {[...Array(8)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute w-2 h-2 bg-white/40 rounded-full"
-                  animate={{
-                    x: [0, Math.random() * 200 - 100],
-                    y: [0, Math.random() * 200 - 100],
-                    scale: [0, 1, 0],
-                    opacity: [0, 1, 0]
-                  }}
-                  transition={{
-                    repeat: Infinity,
-                    duration: 4 + Math.random() * 3,
-                    delay: Math.random() * 2,
-                    ease: "easeInOut"
-                  }}
-                  style={{
-                    left: `${20 + Math.random() * 60}%`,
-                    top: `${20 + Math.random() * 60}%`,
-                    zIndex: 2
-                  }}
-                />
-              ))}
+              {useMemo(() => {
+                // Generate deterministic random values for hydration safety
+                const particles = Array.from({ length: 8 }, (_, i) => {
+                  // Use a seeded pseudo-random function for deterministic values
+                  const seed = i * 12345;
+                  const pseudoRandom = (min: number, max: number) => {
+                    // Simple LCG for deterministic "random"
+                    const a = 1664525, c = 1013904223, m = 2 ** 32;
+                    let val = (seed * a + c) % m;
+                    return min + (val / m) * (max - min);
+                  };
+                  return {
+                    x: [0, pseudoRandom(-100, 100)],
+                    y: [0, pseudoRandom(-100, 100)],
+                    duration: 4 + pseudoRandom(0, 3),
+                    delay: pseudoRandom(0, 2),
+                    left: `${20 + pseudoRandom(0, 60)}%`,
+                    top: `${20 + pseudoRandom(0, 60)}%`,
+                  };
+                });
+                return particles.map((p, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-2 h-2 bg-white/40 rounded-full"
+                    animate={{
+                      x: p.x,
+                      y: p.y,
+                      scale: [0, 1, 0],
+                      opacity: [0, 1, 0]
+                    }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: p.duration,
+                      delay: p.delay,
+                      ease: "easeInOut"
+                    }}
+                    style={{
+                      left: p.left,
+                      top: p.top,
+                      zIndex: 2
+                    }}
+                  />
+                ));
+              }, [])}
 
               {/* Main animated background shapes */}
               <motion.div
