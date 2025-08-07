@@ -233,7 +233,7 @@ export default function Portfolio() {
                   const pseudoRandom = (min: number, max: number) => {
                     // Simple LCG for deterministic "random"
                     const a = 1664525, c = 1013904223, m = 2 ** 32;
-                    let val = (seed * a + c) % m;
+                    const val = (seed * a + c) % m;
                     return min + (val / m) * (max - min);
                   };
                   return {
