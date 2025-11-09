@@ -502,10 +502,17 @@ export default function Portfolio() {
             {/* Work Experience */}
             <div className="space-y-8">
               {[{
+                role: "AI Engineer",
+                company: "EXPAIA",
+                period: "September 2025 – Present",
+                desc: "Built AI-powered web applications using Laravel and Next.js, built AI automations and Agents uisng Crewai and Langchain.",
+                skills: ["N8n","LM Studio","Crew Ai","Langchain" ,"AI Integrations"]
+              },
+                {
                 role: "Full Stack Developer",
                 company: "HSABATI",
                 link: "https://www.hsabati.com/",
-                period: "Sep 2024 – Present",
+                period: "August 2024 – September 2025",
                 desc: "Built secure REST APIs with Laravel, integrated with Next.js frontend, and built admin dashboards using Vue.js.",
                 skills: ["Laravel", "Vue JS", "Next.js"]
               }, {
